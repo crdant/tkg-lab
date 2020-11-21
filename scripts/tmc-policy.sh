@@ -16,7 +16,14 @@ IAAS=$(yq r $PARAMS_YAML iaas)
 VMWARE_ID=$(yq r $PARAMS_YAML vmware-id)
 
 tmc cluster iam add-binding $VMWARE_ID-$CLUSTER_NAME-$IAAS \
+<<<<<<< HEAD
   --management-cluster-name attached \
   --provisioner-name attached \
   --role $ROLE \
   --groups $POLICY_GROUPS
+=======
+  --role $ROLE \
+  --groups $POLICY_GROUPS \
+  --management-cluster-name attached \
+  --provisioner-name attached
+>>>>>>> upstream

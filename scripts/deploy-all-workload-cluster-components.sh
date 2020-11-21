@@ -6,7 +6,8 @@ source $TKG_LAB_SCRIPTS/set-env.sh
 # Workload Step 1
 $TKG_LAB_SCRIPTS/deploy-workload-cluster.sh \
   $(yq r $PARAMS_YAML workload-cluster.name) \
-  $(yq r $PARAMS_YAML workload-cluster.worker-replicas)
+  $(yq r $PARAMS_YAML workload-cluster.worker-replicas) \
+  $(yq r $PARAMS_YAML workload-cluster.controlplane-endpoint-ip)
 # Workload Step 2
 $TKG_LAB_SCRIPTS/tmc-attach.sh $(yq r $PARAMS_YAML workload-cluster.name)
 # Workload Step 3
@@ -42,5 +43,4 @@ $TKG_LAB_SCRIPTS/generate-and-apply-fluent-bit-yaml.sh $(yq r $PARAMS_YAML workl
 # Workload Step 7
 $TKG_LAB_SCRIPTS/deploy-wavefront.sh $(yq r $PARAMS_YAML workload-cluster.name)
 # Workload Step 8
-$TKG_LAB_SCRIPTS/dataprotection.sh $(yq r $PARAMS_YAML workload-cluster.name) \
-  $(yq r $PARAMS_YAML workload-cluster.backup-location)
+$TKG_LAB_SCRIPTS/dataprotection.sh $(yq r $PARAMS_YAML workload-cluster.name)
