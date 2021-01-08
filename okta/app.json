@@ -1,0 +1,30 @@
+{
+    "name": "oidc_client",
+    "label": $name,
+    "signOnMode": "OPENID_CONNECT",
+    "credentials": {
+        "oauthClient": {
+            "token_endpoint_auth_method": "client_secret_basic"
+        }
+    },
+    "settings": {
+        "oauthClient": {
+            "client_uri": $uri, 
+            "logo_uri": "https://blogs.vmware.com/vsphere/files/2020/03/Cloud-Native-Apps-Icon-2020.png",
+            "redirect_uris": [
+                $redirect_uri
+            ],
+            "post_logout_redirect_uris": [
+                $logout_redirect_uri
+            ],
+            "response_types": [
+                "code"
+            ],
+            "grant_types": [
+                "authorization_code"
+            ],
+            "application_type": "web"
+        }
+    }
+}
+
